@@ -20,6 +20,8 @@ namespace DemoCalculatorTest
     int numbersIndex=0;
     string labelText = "";
     bool lockForOperators = true;
+    bool fisrtCharacter = true;
+    string actuallyNumber = "";
     
 
 
@@ -141,53 +143,83 @@ namespace DemoCalculatorTest
 
         private void insertNumber(decimal number)
         {
-            if (numbersIndex < numbersToCalculate.Length)
+            if (this.numbersIndex < this.numbersToCalculate.Length)
             {
-
-                numbersToCalculate[numbersIndex] = 1;
-                numbersIndex++;
+                this.actuallyNumber += number.ToString(); 
+                
+                //Incrementa o número digitado no label (textView)
                 UpdateTextlabel(number.ToString());
-                lockForOperators=false
+                this.lockForOperators = false;
+                //this.fisrtCharacter
+                System.Diagnostics.Debug.WriteLine("lockForOperations: "+ lockForOperators);
             }
             else
             {
                 MessageBox.Show("O número máximo de números a serem inseridos excedeu o limite!");
             }
         }
+        
 
+        private void closeActuallyNumber()
+        {
+            this.numbersToCalculate[numbersIndex] = decimal.Parse(actuallyNumber);
+            numbersIndex++;
+        }
         private void insertOperation(string operation)
         {
             
 
-            if (operationsIndex > 0)
+            if (this.lockForOperators==false)
             {
-                if (lockForOperators==false)
+                System.Diagnostics.Debug.WriteLine(this.lockForOperators);
+                if (this.operationsIndex < operations.Length)
                 {
-                    if (operationsIndex < operations.Length)
-                    {
-                        operations[operationsIndex] = operation;
-                        operationsIndex++;
-                        UpdateTextlabel(operation);
-                        lockForOperators = true;
-                    }
-                    
-                    else
-                    {
-                        MessageBox.Show("Número decaracteres operados máximo foi excedido");
-                    }
+                    this.operations[operationsIndex] = operation;
+                    this.operationsIndex++;
+                    UpdateTextlabel(operation);
+                    closeActuallyNumber();
+                    this.lockForOperators = true;
                 }
+                    
                 else
                 {
-                    MessageBox.Show("Não pode inserir operador agora atrás de outro, primeiro insira um número");
+                    MessageBox.Show("Número decaracteres operados máximo foi excedido");
                 }
             }
             else
             {
-                MessageBox.Show("Não pode começar um operador, e sim com um número!");
+                MessageBox.Show("Não pode inserir operador agora atrás de outro, e nem começar o cálculo com um operador, primeiro insira um número");
             }
+           
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void executeCalc()
+        {
+            buildCalcString(this.numbersToCalculate, this.operations);
+        }
+
+        private string buildCalcString(decimal numbers, string operations)
+        {
+            
+        }
+
+        private string executeDivisions(string operations)
+        {
+
+        }
+
+        private string executeMultiplications()
+        {
+
+        }
+
+        private string executeAddictionsAndSubtractions()
         {
 
         }
