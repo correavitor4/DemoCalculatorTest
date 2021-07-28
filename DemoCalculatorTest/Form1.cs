@@ -19,6 +19,7 @@ namespace DemoCalculatorTest
     int operationsIndex =0;
     int numbersIndex=0;
     string labelText = "";
+    bool lockForOperators = true;
     
 
 
@@ -146,6 +147,7 @@ namespace DemoCalculatorTest
                 numbersToCalculate[numbersIndex] = 1;
                 numbersIndex++;
                 UpdateTextlabel(number.ToString());
+                lockForOperators=false
             }
             else
             {
@@ -155,15 +157,33 @@ namespace DemoCalculatorTest
 
         private void insertOperation(string operation)
         {
-            if (operationsIndex < operations.Length)
+            
+
+            if (operationsIndex > 0)
             {
-                operations[operationsIndex] = operation;
-                operationsIndex++;
-                UpdateTextlabel(operation);
+                if (lockForOperators==false)
+                {
+                    if (operationsIndex < operations.Length)
+                    {
+                        operations[operationsIndex] = operation;
+                        operationsIndex++;
+                        UpdateTextlabel(operation);
+                        lockForOperators = true;
+                    }
+                    
+                    else
+                    {
+                        MessageBox.Show("Número decaracteres operados máximo foi excedido");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Não pode inserir operador agora atrás de outro, primeiro insira um número");
+                }
             }
             else
             {
-
+                MessageBox.Show("Não pode começar um operador, e sim com um número!");
             }
         }
 
