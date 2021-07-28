@@ -97,7 +97,7 @@ namespace DemoCalculatorTest
 
         private void button13_Click(object sender, EventArgs e)
         {
-            insertOperation("/");
+            insertNumber(3);
         }
 
         private void button14_Click(object sender, EventArgs e)
@@ -151,7 +151,7 @@ namespace DemoCalculatorTest
                 UpdateTextlabel(number.ToString());
                 this.lockForOperators = false;
                 //this.fisrtCharacter
-                System.Diagnostics.Debug.WriteLine("lockForOperations: "+ lockForOperators);
+                
             }
             else
             {
@@ -162,8 +162,11 @@ namespace DemoCalculatorTest
 
         private void closeActuallyNumber()
         {
-            this.numbersToCalculate[numbersIndex] = decimal.Parse(actuallyNumber);
-            numbersIndex++;
+            this.numbersToCalculate[numbersIndex] = decimal.Parse(this.actuallyNumber);
+            System.Diagnostics.Debug.WriteLine("Número atual fechado: "+this.numbersToCalculate[numbersIndex]);
+            this.numbersIndex++;
+            actuallyNumber = "";
+
         }
         private void insertOperation(string operation)
         {
@@ -171,7 +174,7 @@ namespace DemoCalculatorTest
 
             if (this.lockForOperators==false)
             {
-                System.Diagnostics.Debug.WriteLine(this.lockForOperators);
+                
                 if (this.operationsIndex < operations.Length)
                 {
                     this.operations[operationsIndex] = operation;
@@ -199,12 +202,12 @@ namespace DemoCalculatorTest
         }
 
 
-        private void executeCalc()
+        /*private void executeCalc()
         {
             buildCalcString(this.numbersToCalculate, this.operations);
         }
 
-        private string buildCalcString(decimal numbers, string operations)
+        private string buildCalcString(decimal[] numbers, string[] operations)
         {
             
         }
@@ -222,7 +225,7 @@ namespace DemoCalculatorTest
         private string executeAddictionsAndSubtractions()
         {
 
-        }
+        }*/
     }
 
 
