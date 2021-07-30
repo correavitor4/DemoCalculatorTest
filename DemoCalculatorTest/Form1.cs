@@ -274,7 +274,7 @@ namespace DemoCalculatorTest
                 {
                     
                     //Se encontrar uma operação do tipo divisão, vai fazê-la e limpar campos desnecessários, que serão posteriormente re-organizados
-                    this.numbersToCalculate[i]= (decimal.Parse(this.numbersToCalculate[i]) / decimal.Parse(this.numbersToCalculate[i + 1])).ToString();
+                    this.numbersToCalculate[i+1]= (decimal.Parse(this.numbersToCalculate[i]) / decimal.Parse(this.numbersToCalculate[i + 1])).ToString();
                     this.numbersToCalculate[i] = "";
                     this.operations[i] = "";
                     organizeStrings();
@@ -295,7 +295,7 @@ namespace DemoCalculatorTest
                 {
 
                     //Se encontrar uma operação do tipo multiplicação, vai fazê-la e limpar campos desnecessários, que serão posteriormente re-organizados
-                    this.numbersToCalculate[i] = (decimal.Parse(this.numbersToCalculate[i]) * decimal.Parse(this.numbersToCalculate[i + 1])).ToString();
+                    this.numbersToCalculate[i+1] = (decimal.Parse(this.numbersToCalculate[i]) * decimal.Parse(this.numbersToCalculate[i + 1])).ToString();
                     this.numbersToCalculate[i] = "";
                     this.operations[i] = "";
                     organizeStrings();
@@ -316,7 +316,7 @@ namespace DemoCalculatorTest
                 {
 
                     //Se encontrar uma operação do tipo adição, vai fazê-la e limpar campos desnecessários, que serão posteriormente re-organizados
-                    this.numbersToCalculate[i] = (decimal.Parse(this.numbersToCalculate[i]) + decimal.Parse(this.numbersToCalculate[i + 1])).ToString();
+                    this.numbersToCalculate[i+1] = (decimal.Parse(this.numbersToCalculate[i]) + decimal.Parse(this.numbersToCalculate[i + 1])).ToString();
                     this.numbersToCalculate[i] = "";
                     this.operations[i] = "";
                     organizeStrings();
@@ -337,7 +337,7 @@ namespace DemoCalculatorTest
                 {
 
                     //Se encontrar uma operação do tipo subtração, vai fazê-la e limpar campos desnecessários, que serão posteriormente re-organizados
-                    this.numbersToCalculate[i] = (decimal.Parse(this.numbersToCalculate[i]) - decimal.Parse(this.numbersToCalculate[i + 1])).ToString();
+                    this.numbersToCalculate[i+1] = (decimal.Parse(this.numbersToCalculate[i]) - decimal.Parse(this.numbersToCalculate[i + 1])).ToString();
                     this.numbersToCalculate[i] = "";
                     this.operations[i] = "";
                     organizeStrings();
