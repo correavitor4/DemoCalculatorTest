@@ -15,7 +15,7 @@ namespace DemoCalculatorTest
 
         
     string[] operations = new string[50];
-    decimal[] numbersToCalculate = new decimal[100];
+    string[] numbersToCalculate = new string[100];
     int operationsIndex =0;
     int numbersIndex=0;
     string labelText = "";
@@ -108,7 +108,7 @@ namespace DemoCalculatorTest
         private void button15_Click(object sender, EventArgs e)
         {
 
-        }
+        } 
 
         private void button16_Click(object sender, EventArgs e)
         {
@@ -162,7 +162,7 @@ namespace DemoCalculatorTest
 
         private void closeActuallyNumber()
         {
-            this.numbersToCalculate[numbersIndex] = decimal.Parse(this.actuallyNumber);
+            this.numbersToCalculate[numbersIndex] = this.actuallyNumber;
             System.Diagnostics.Debug.WriteLine("Número atual fechado: "+this.numbersToCalculate[numbersIndex]);
             this.numbersIndex++;
             actuallyNumber = "";
@@ -202,30 +202,53 @@ namespace DemoCalculatorTest
         }
 
 
-        /*private void executeCalc()
+        private void executeCalc()
         {
-            buildCalcString(this.numbersToCalculate, this.operations);
-        }
+            executeDivisions();
+            
 
-        private string buildCalcString(decimal[] numbers, string[] operations)
-        {
             
         }
+        
 
-        private string executeDivisions(string operations)
+       
+        private void executeDivisions()
         {
-
+            for(int i=0; i < 100; i++)
+            {
+                if (this.operations[i] == "")
+                {
+                    System.Diagnostics.Debug.WriteLine("Nenhuma divisão a mais a ser feita");
+                    break;
+                }
+                if (this.operations[i] == "/")
+                {
+                    
+                    //Se encontrar uma operação do tipo divisão, vai fazê-la e limpar campos desnecessários, que serão posteriormente re-organizados
+                    this.numbersToCalculate[i]= (decimal.Parse(this.numbersToCalculate[i]) / decimal.Parse(this.numbersToCalculate[i + 1])).ToString();
+                    this.numbersToCalculate[i] = "";
+                    this.operations[i] = "";
+                    organizeStrings();
+                }
+            }
         }
 
-        private string executeMultiplications()
+        private void organizeStrings()
         {
-
+            for(int i = 0; i < 99; i++)
+            {
+                if (this.numbersToCalculate[i]=="")
+                {
+                    this.numbersToCalculate[i] = this.numbersToCalculate[i + 1];
+                    this.numbersToCalculate[i + 1] = "";
+                }
+                if (this.operations[i] == "")
+                {
+                    this.operations[i] = this.operations[i + 1];
+                    this.operations[i + 1] = "";
+                }
+            }
         }
-
-        private string executeAddictionsAndSubtractions()
-        {
-
-        }*/
     }
 
 
