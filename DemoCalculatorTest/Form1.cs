@@ -341,7 +341,7 @@ namespace DemoCalculatorTest
                     this.numbersToCalculate[i] = "";
                     this.operations[i] = "";
                     organizeStrings();
-                }
+                } 
             }
         }
         private void organizeStrings()
