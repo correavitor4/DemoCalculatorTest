@@ -133,7 +133,7 @@ namespace DemoCalculatorTest
 
         private void button18_Click(object sender, EventArgs e)
         {
-
+            insertDot();
         }
 
         private void button19_Click(object sender, EventArgs e)
@@ -146,7 +146,12 @@ namespace DemoCalculatorTest
 
         }
 
-
+        private void insertDot()
+        {
+            this.actuallyNumber += ".";
+            //Incrementa o ponto digitado no label (textView)
+            UpdateTextlabel(".");
+        }
 
         private bool verifyConditionsToCalc()
         {
