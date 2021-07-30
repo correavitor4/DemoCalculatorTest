@@ -46,7 +46,6 @@ namespace DemoCalculatorTest
             this.threeButton = new System.Windows.Forms.Button();
             this.subtraction = new System.Windows.Forms.Button();
             this.equalsButton = new System.Windows.Forms.Button();
-            this.changeSignalButton = new System.Windows.Forms.Button();
             this.zeroButton = new System.Windows.Forms.Button();
             this.decimalButton = new System.Windows.Forms.Button();
             this.additionButton = new System.Windows.Forms.Button();
@@ -99,7 +98,6 @@ namespace DemoCalculatorTest
             this.tableLayoutPanel1.Controls.Add(this.threeButton, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.subtraction, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.equalsButton, 4, 3);
-            this.tableLayoutPanel1.Controls.Add(this.changeSignalButton, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.zeroButton, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.decimalButton, 2, 4);
             this.tableLayoutPanel1.Controls.Add(this.additionButton, 3, 4);
@@ -316,19 +314,6 @@ namespace DemoCalculatorTest
             this.equalsButton.UseVisualStyleBackColor = true;
             this.equalsButton.Click += new System.EventHandler(this.button15_Click);
             // 
-            // changeSignalButton
-            // 
-            this.changeSignalButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.changeSignalButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.changeSignalButton.Location = new System.Drawing.Point(20, 380);
-            this.changeSignalButton.Margin = new System.Windows.Forms.Padding(20);
-            this.changeSignalButton.Name = "changeSignalButton";
-            this.changeSignalButton.Size = new System.Drawing.Size(66, 50);
-            this.changeSignalButton.TabIndex = 16;
-            this.changeSignalButton.Text = "+/-";
-            this.changeSignalButton.UseVisualStyleBackColor = true;
-            this.changeSignalButton.Click += new System.EventHandler(this.button16_Click);
-            // 
             // zeroButton
             // 
             this.zeroButton.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -422,7 +407,6 @@ namespace DemoCalculatorTest
         private System.Windows.Forms.Button threeButton;
         private System.Windows.Forms.Button subtraction;
         private System.Windows.Forms.Button equalsButton;
-        private System.Windows.Forms.Button changeSignalButton;
         private System.Windows.Forms.Button zeroButton;
         private System.Windows.Forms.Button decimalButton;
         private System.Windows.Forms.Button additionButton;
