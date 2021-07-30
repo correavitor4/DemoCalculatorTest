@@ -213,6 +213,7 @@ namespace DemoCalculatorTest
 
         private void closeActuallyNumber()
         {
+
             this.numbersToCalculate[numbersIndex] = this.actuallyNumber;
             System.Diagnostics.Debug.WriteLine("Número atual fechado: "+this.numbersToCalculate[numbersIndex]);
             this.numbersIndex++;
@@ -229,6 +230,7 @@ namespace DemoCalculatorTest
                 if (this.operationsIndex < operations.Length)
                 {
                     this.operations[operationsIndex] = operation;
+                    System.Diagnostics.Debug.WriteLine("Operação " + operation + " adicionada em operations["+operationsIndex+"]");
                     this.operationsIndex++;
                     UpdateTextlabel(operation);
                     closeActuallyNumber();
@@ -261,7 +263,13 @@ namespace DemoCalculatorTest
 
             clearLabelText();
             UpdateTextlabel(this.numbersToCalculate[0]);
-            
+            clearOperations();
+            clearNumbers();
+            this.lockForOperators = false;
+            this.fisrtCharacter = false;
+            this.actuallyNumber = textBox1.Text;
+
+
         }
         
 
