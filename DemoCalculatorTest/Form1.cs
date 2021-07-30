@@ -57,7 +57,7 @@ namespace DemoCalculatorTest
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            restartProcess();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -257,8 +257,7 @@ namespace DemoCalculatorTest
         {
             executeDivisions();
             executeMultiplications();
-            executeAddictions();
-            executeSubtractions();
+            executeAddictionsAndSubtractions();
 
             clearLabelText();
             UpdateTextlabel(this.numbersToCalculate[0]);
@@ -276,7 +275,7 @@ namespace DemoCalculatorTest
                     System.Diagnostics.Debug.WriteLine("Nenhuma divisão a mais a ser feita");
                     break;
                 }
-                if (this.operations[i] == "/")
+                while(this.operations[i] == "/")
                 {
                     
                     //Se encontrar uma operação do tipo divisão, vai fazê-la e limpar campos desnecessários, que serão posteriormente re-organizados
@@ -297,40 +296,54 @@ namespace DemoCalculatorTest
                     System.Diagnostics.Debug.WriteLine("Nenhuma multiplicação mais a ser feita");
                     break;
                 }
-                if (this.operations[i] == "*")
+                while (this.operations[i] == "*")
                 {
-
                     //Se encontrar uma operação do tipo multiplicação, vai fazê-la e limpar campos desnecessários, que serão posteriormente re-organizados
-                    this.numbersToCalculate[i+1] = (decimal.Parse(this.numbersToCalculate[i]) * decimal.Parse(this.numbersToCalculate[i + 1])).ToString();
+                    this.numbersToCalculate[i + 1] = (decimal.Parse(this.numbersToCalculate[i]) * decimal.Parse(this.numbersToCalculate[i + 1])).ToString();
                     this.numbersToCalculate[i] = "";
                     this.operations[i] = "";
                     organizeStrings();
                 }
+                
             }
         }
 
-        private void executeAddictions()
+        private void executeAddictionsAndSubtractions()
         {
             for (int i = 0; i < this.operations.Length; i++)
             {
                 if (this.operations[i] == "")
                 {
-                    System.Diagnostics.Debug.WriteLine("Nenhuma adição a mais a ser feita");
+                    System.Diagnostics.Debug.WriteLine("Nenhuma adição ou subtração a mais a ser feita");
                     break;
                 }
-                if (this.operations[i] == "+")
+                while (this.operations[i] == "+" || this.operations[i] == "-")
                 {
+                    if (this.operations[i] == "+")
+                    {
 
-                    //Se encontrar uma operação do tipo adição, vai fazê-la e limpar campos desnecessários, que serão posteriormente re-organizados
-                    this.numbersToCalculate[i+1] = (decimal.Parse(this.numbersToCalculate[i]) + decimal.Parse(this.numbersToCalculate[i + 1])).ToString();
-                    this.numbersToCalculate[i] = "";
-                    this.operations[i] = "";
-                    organizeStrings();
+                        System.Diagnostics.Debug.WriteLine("Adição feita");
+                        this.numbersToCalculate[i + 1] = (decimal.Parse(this.numbersToCalculate[i]) + decimal.Parse(this.numbersToCalculate[i + 1])).ToString();
+                        this.numbersToCalculate[i] = "";
+                        this.operations[i] = "";
+                        organizeStrings();
+                    }
+                    if (this.operations[i] == "-")
+                    {
+
+                        System.Diagnostics.Debug.WriteLine("Subtração feita");
+                        this.numbersToCalculate[i + 1] = (decimal.Parse(this.numbersToCalculate[i]) - decimal.Parse(this.numbersToCalculate[i + 1])).ToString();
+                        this.numbersToCalculate[i] = "";
+                        this.operations[i] = "";
+                        organizeStrings();
+                    }
                 }
+                
+                
             }
         }
 
-        private void executeSubtractions()
+        /*private void executeSubtractions()
         {
             for (int i = 0; i <this.operations.Length; i++)
             {
@@ -349,7 +362,7 @@ namespace DemoCalculatorTest
                     organizeStrings();
                 } 
             }
-        }
+        }*/
         private void organizeStrings()
         {
             for(int i = 0; i < this.operations.Length-1; i++)
@@ -368,7 +381,44 @@ namespace DemoCalculatorTest
             }
         }
 
-        
+
+        private void restartProcess()
+        {
+            clearOperations();
+            clearNumbers();
+            clearLabel();
+            this.lockForOperators = true;
+            this.fisrtCharacter = true;
+            this.actuallyNumber = "";
+
+        }
+        private void clearOperations()
+        {
+            for(int i = 0; i < this.operations.Length; i++)
+            {
+                this.operations[i] = null;
+                
+            }
+            this.operationsIndex = 0;
+        }
+
+        private void clearNumbers()
+        {
+            for (int i = 0; i < this.numbersToCalculate.Length; i++)
+            {
+                this.numbersToCalculate[i] = null;
+                
+            }
+            numbersIndex = 0;
+        }
+
+        private void clearLabel()
+        {
+            this.labelText = "";
+            textBox1.Text = "";
+
+        }
+
     }
 
 
